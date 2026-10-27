@@ -1,3 +1,4 @@
-// Após implantar a stack AWS, substitua a string vazia pela URL base da API HTTP.
-// Exemplo: https://abc123.execute-api.sa-east-1.amazonaws.com
-window.NUVME_CONFIG = { apiUrl: "" };
+// Configuração da API AWS para o GitHub Pages.
+window.NUVME_CONFIG = {
+  apiUrl: "https://czjkcgzp9a.execute-api.us-east-1.amazonaws.com"
+};
