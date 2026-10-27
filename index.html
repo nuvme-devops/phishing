@@ -18,14 +18,14 @@
     <span class="pill">TREINAMENTO INTERNO</span>
     <h2>Segurança começa com uma boa decisão.</h2>
     <p>Pratique como identificar e-mails suspeitos, tentativas de fraude e situações de engenharia social. Escolha uma trilha para começar.</p>
-    <div class="privacy-note"><strong>Privacidade:</strong> esta versão funciona localmente no navegador. As respostas não são enviadas nem armazenadas em um servidor. Use apenas dados fictícios.</div>
+    <div class="privacy-note"><strong>Privacidade:</strong> ao concluir, suas respostas, pontuação e dados informados serão enviados à plataforma interna para registro e relatório diário à equipe responsável. Os registros serão mantidos por até 90 dias. Não informe senhas ou códigos de autenticação.</div>
   </section>
   <section class="profile panel">
     <h2>Sobre você</h2>
-    <p class="muted">Os campos são opcionais e servem apenas para personalizar o resumo exibido no final.</p>
+    <p class="muted">Informe seus dados para registrar a conclusão do treinamento.</p>
     <div class="form-grid">
-      <label>Nome (opcional)<input id="participantName" autocomplete="name" placeholder="Como podemos chamar você?"></label>
-      <label>Departamento (opcional)<select id="participantDept"><option value="">Selecione</option><option>TI / Segurança</option><option>Financeiro</option><option>RH</option><option>Comercial</option><option>Operações</option><option>Administrativo</option><option>Outro</option></select></label>
+      <label>Nome<input id="participantName" autocomplete="name" placeholder="Seu nome" required></label>
+      <label>E-mail corporativo<input id="participantEmail" type="email" autocomplete="email" placeholder="voce@nuvme.cloud" required></label>
     </div>
   </section>
   <section class="tracks">
@@ -60,9 +60,10 @@
     <h3 id="resultAdviceTitle">Próximos passos</h3><p id="resultAdvice"></p>
     <div id="answerReview" class="review-list"></div>
     <div class="button-row"><button id="copy" class="btn" onclick="copyResult()">Copiar resumo</button><button class="btn btn-light" onclick="backHome()">Voltar ao portal</button></div><p id="copyStatus" class="small-note" aria-live="polite"></p>
-    <p class="small-note">Este resumo não é enviado automaticamente. Se decidir compartilhá-lo, faça isso pelos canais internos aprovados.</p>
+    <p id="submissionStatus" class="small-note" aria-live="polite">Enviando resultado para registro...</p>
   </section>
+  <input id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px" />
   <footer>NUVME · Security Awareness · Conteúdo educativo com cenários fictícios.</footer>
 </main>
-<script src="assets/app.js"></script>
+<script src="assets/config.js"></script><script src="assets/app.js"></script>
 </body></html>
