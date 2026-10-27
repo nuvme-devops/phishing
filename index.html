@@ -1,77 +1,68 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Treinamento interno de conscientização sobre phishing da Nuvme.">
-<title>Desafio Anti-Phishing | Nuvme</title>
-<style>
-:root{--navy:#10243a;--blue:#2463eb;--cyan:#dff3ff;--ink:#182230;--muted:#657386;--bg:#f4f7fb;--white:#fff;--border:#dce4ee;--red:#b42318;--green:#087443;--amber:#8a4b08}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{background:linear-gradient(120deg,#10243a,#164e83);color:white;padding:30px 20px} .head{max-width:940px;margin:auto}
-.brand{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;font-weight:700}.hero{font-size:clamp(1.8rem,4vw,2.65rem);line-height:1.1;margin:12px 0}.head p{max-width:700px;color:#e2edf8;margin:0}
-main{max-width:940px;margin:26px auto;padding:0 16px 48px}.panel{background:white;border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 8px 24px #10243a0b;margin-bottom:18px}
-h2{font-size:1.25rem;margin:0 0 12px}label{display:block;font-weight:650;margin:12px 0 5px}input,select{width:100%;padding:12px 13px;border:1px solid #b9c6d6;border-radius:10px;font:inherit;background:white}input:focus,select:focus,button:focus-visible{outline:3px solid #94c5ff;outline-offset:2px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.btn{border:0;border-radius:10px;background:var(--blue);color:white;font:inherit;font-weight:700;padding:12px 18px;cursor:pointer}.btn.secondary{background:#e8eef7;color:#17304d}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.progressrow{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.9rem}.track{height:8px;background:#e7edf5;border-radius:99px;overflow:hidden;margin:8px 0 20px}.fill{height:100%;background:#3182f6;width:0;transition:width .2s}
-.email{border:1px solid var(--border);border-radius:14px;overflow:hidden}.emailtop{padding:15px 18px;background:#f8fafc;border-bottom:1px solid var(--border)}.emailtop div{margin:3px 0;overflow-wrap:anywhere}.emailbody{padding:20px;white-space:pre-line}.tag{display:inline-block;font-size:.78rem;font-weight:800;padding:4px 9px;border-radius:99px;background:#eaf1ff;color:#244a9b}.options{display:grid;gap:10px;margin-top:18px}.option{border:1px solid #cbd5e1;background:white;color:var(--ink);border-radius:12px;padding:13px 15px;text-align:left;font:inherit;cursor:pointer}.option:hover{border-color:var(--blue);background:#f7faff}.option.selected{border:2px solid var(--blue);background:#eef5ff}.option:disabled{cursor:default}.feedback{border-radius:12px;padding:15px;margin-top:18px}.feedback.good{background:#eaf8f0;border:1px solid #b4e2c8}.feedback.bad{background:#fff0ef;border:1px solid #f3c2be}.feedback h3{margin:0 0 6px;font-size:1rem}.muted{color:var(--muted)}.hidden{display:none!important}.resultscore{font-size:2.6rem;font-weight:850;line-height:1.2;color:var(--navy)}.resultbar{height:12px;border-radius:99px;background:#e8edf4;overflow:hidden;margin:12px 0}.resultbar div{height:100%;background:var(--blue)}.notice{font-size:.9rem;color:var(--muted);margin-top:12px}.footer{text-align:center;color:var(--muted);font-size:.85rem;padding:8px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.panel{padding:18px}header{padding:25px 18px}}
-</style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portal interno de conscientização em segurança da informação da Nuvme.">
+<title>Nuvme Security Awareness</title>
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<header><div class="head"><div class="brand">NUVME · CONSCIENTIZAÇÃO EM SEGURANÇA</div><h1 class="hero">Desafio Anti-Phishing</h1><p>Você consegue identificar mensagens suspeitas antes que elas virem um incidente? Analise cada cenário e escolha a melhor ação.</p></div></header>
-<main>
-<section class="panel" id="intro">
-<h2>Antes de começar</h2>
-<p>Este é um exercício educativo com mensagens fictícias inspiradas em situações comuns do ambiente corporativo. Nenhuma mensagem será enviada e nenhuma senha será solicitada.</p>
-<div class="grid">
-<div><label for="name">Nome</label><input id="name" autocomplete="name" placeholder="Seu nome (opcional)"></div>
-<div><label for="department">Departamento</label><select id="department"><option value="">Selecione (opcional)</option><option>TI / Segurança</option><option>Financeiro</option><option>RH</option><option>Comercial</option><option>Operações</option><option>Administrativo</option><option>Outro</option></select></div>
-<div><label for="mode">Modo</label><select id="mode"><option value="training">Treinamento (com explicações)</option><option value="assessment">Avaliação (feedback ao responder)</option></select></div>
-</div>
-<p class="notice">Privacidade: as respostas e o resultado ficam apenas nesta página, no seu navegador. Não são enviados à Nuvme nem armazenados em um painel central.</p>
-<div class="actions"><button class="btn" id="start">Começar desafio</button></div>
-</section>
-<section class="panel hidden" id="quiz">
-<div class="progressrow"><span id="count">Pergunta 1 de 10</span><span id="points">0 pontos</span></div><div class="track"><div class="fill" id="fill"></div></div>
-<div class="tag" id="category">E-mail corporativo</div><h2 id="qtitle" style="margin-top:12px"></h2>
-<div class="email"><div class="emailtop"><div><strong>De:</strong> <span id="sender"></span></div><div><strong>Para:</strong> Colaborador(a) Nuvme</div><div><strong>Assunto:</strong> <span id="subject"></span></div></div><div class="emailbody" id="body"></div></div>
-<p><strong>O que você faria?</strong></p><div class="options" id="options"></div><div id="feedback" class="feedback hidden" aria-live="polite"></div>
-<div class="actions"><button class="btn" id="next" disabled>Próxima pergunta</button><button class="btn secondary" id="quit">Encerrar</button></div>
-</section>
-<section class="panel hidden" id="results">
-<h2>Desafio concluído</h2><p id="greeting"></p><div class="resultscore" id="score"></div><div class="muted" id="scoretext"></div><div class="resultbar"><div id="resultfill"></div></div><h2 id="resulttitle"></h2><p id="resultmessage"></p><div id="review"></div>
-<div class="actions"><button class="btn" id="restart">Refazer desafio</button><button class="btn secondary" id="copy">Copiar resumo</button></div>
-<p class="notice">Este resultado não foi enviado por e-mail nem salvo em um painel. Se precisar compartilhar, use “Copiar resumo” e envie pelos canais internos aprovados.</p>
-</section>
-<div class="footer">Nuvme · Treinamento educativo · Não utilize links ou domínios deste exercício para acessar sistemas reais.</div>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brandmark">N</div>
+    <div><div class="eyebrow">NUVME · SEGURANÇA DA INFORMAÇÃO</div><h1>Nuvme Security Awareness</h1></div>
+  </div>
+</header>
+<main class="container">
+  <section class="intro panel">
+    <span class="pill">TREINAMENTO INTERNO</span>
+    <h2>Segurança começa com uma boa decisão.</h2>
+    <p>Pratique como identificar e-mails suspeitos, tentativas de fraude e situações de engenharia social. Escolha uma trilha para começar.</p>
+    <div class="privacy-note"><strong>Privacidade:</strong> esta versão funciona localmente no navegador. As respostas não são enviadas nem armazenadas em um servidor. Use apenas dados fictícios.</div>
+  </section>
+  <section class="profile panel">
+    <h2>Sobre você</h2>
+    <p class="muted">Os campos são opcionais e servem apenas para personalizar o resumo exibido no final.</p>
+    <div class="form-grid">
+      <label>Nome (opcional)<input id="participantName" autocomplete="name" placeholder="Como podemos chamar você?"></label>
+      <label>Departamento (opcional)<select id="participantDept"><option value="">Selecione</option><option>TI / Segurança</option><option>Financeiro</option><option>RH</option><option>Comercial</option><option>Operações</option><option>Administrativo</option><option>Outro</option></select></label>
+    </div>
+  </section>
+  <section class="tracks">
+    <article class="track-card panel">
+      <div class="track-icon basic">01</div><div class="track-label">TRILHA 01</div>
+      <h2>Básico</h2><p>Aprenda a reconhecer sinais clássicos de phishing e a adotar hábitos seguros no dia a dia.</p>
+      <ul><li>Links e domínios suspeitos</li><li>Anexos e pedidos de credenciais</li><li>Urgência e pressão emocional</li></ul>
+      <div class="track-meta">10 situações · Feedback imediato</div>
+      <button class="btn" onclick="startTrack('basic')">Começar trilha Básico</button>
+    </article>
+    <article class="track-card panel">
+      <div class="track-icon advanced">02</div><div class="track-label">TRILHA 02</div>
+      <h2>Avançado</h2><p>Analise tentativas mais sofisticadas que imitam processos e contatos corporativos.</p>
+      <ul><li>Fraude de fornecedor e BEC</li><li>Falsificação de remetente e MFA</li><li>Engenharia social e validação independente</li></ul>
+      <div class="track-meta">10 situações · Feedback imediato</div>
+      <button class="btn btn-dark" onclick="startTrack('advanced')">Começar trilha Avançado</button>
+    </article>
+  </section>
+  <section id="quiz" class="panel hidden" aria-live="polite">
+    <div class="quiz-top"><div><span id="quizTrack" class="pill">TRILHA</span><h2 id="questionTitle">Analise a situação</h2></div><button class="text-button" onclick="backHome()">Sair da trilha</button></div>
+    <div class="progress-label"><span id="progressText">Pergunta 1 de 10</span><span id="scoreText">0 pontos</span></div><div class="progress"><div id="progressFill"></div></div>
+    <div class="email-card">
+      <div class="email-header"><div><b>De:</b> <span id="sender"></span></div><div><b>Assunto:</b> <span id="subject"></span></div></div>
+      <div id="emailBody" class="email-body"></div>
+    </div>
+    <h3 class="prompt">Qual é a melhor ação?</h3><div id="answers" class="answers"></div>
+    <div id="feedback" class="feedback hidden" role="status"></div>
+    <div class="button-row"><button id="nextBtn" class="btn" disabled onclick="nextQuestion()">Próxima pergunta</button><button class="btn btn-light" onclick="backHome()">Voltar ao início</button></div>
+  </section>
+  <section id="results" class="panel hidden">
+    <span class="pill">TRILHA CONCLUÍDA</span><h2 id="resultHeading">Seu resultado</h2><div id="resultScore" class="big-score"></div><p id="resultSub" class="muted"></p><div class="result-progress"><div id="resultFill"></div></div>
+    <h3 id="resultAdviceTitle">Próximos passos</h3><p id="resultAdvice"></p>
+    <div id="answerReview" class="review-list"></div>
+    <div class="button-row"><button id="copy" class="btn" onclick="copyResult()">Copiar resumo</button><button class="btn btn-light" onclick="backHome()">Voltar ao portal</button></div><p id="copyStatus" class="small-note" aria-live="polite"></p>
+    <p class="small-note">Este resumo não é enviado automaticamente. Se decidir compartilhá-lo, faça isso pelos canais internos aprovados.</p>
+  </section>
+  <footer>NUVME · Security Awareness · Conteúdo educativo com cenários fictícios.</footer>
 </main>
-<script>
-const questions = [
-{cat:"Alerta de segurança",sender:"suporte@nuvme-security.com",subject:"Ação necessária — sua conta será bloqueada",body:"Olá,\n\nIdentificamos uma inconsistência na autenticação da sua conta corporativa. Para evitar o bloqueio do acesso aos sistemas, confirme seus dados ainda hoje.\n\nRegularize seu acesso: https://nuvme-security.com/validar\n\nEquipe de Tecnologia",answer:1,why:"O domínio não é nuvme.com.br e a mensagem usa ameaça de bloqueio para pressionar você. Não abra o link; acesse os serviços pelo endereço conhecido ou confirme com a TI por um canal oficial.",opts:["Abrir o link e confirmar os dados para evitar o bloqueio.","Não clicar; verificar o aviso com a TI por um canal conhecido.","Responder ao e-mail perguntando se é verdadeiro."]},
-{cat:"Documento compartilhado",sender:"documentos@nuvme-docs.com",subject:"Documento compartilhado com você",body:"Olá,\n\nUm documento relacionado ao seu departamento foi compartilhado e precisa ser revisado até o final do expediente.\n\nVisualizar documento: https://nuvme-docs.com/documento\n\nPode ser solicitado login para consultar o conteúdo.",answer:1,why:"O nome do domínio parece familiar, mas não corresponde ao domínio corporativo conhecido. Não informe credenciais em uma página aberta por link inesperado; confirme com o remetente por outro canal.",opts:["Abrir o documento e entrar com a conta corporativa se for solicitado.","Não clicar e confirmar com o suposto remetente por um canal conhecido.","Encaminhar o e-mail para colegas perguntando se receberam também."]},
-{cat:"Pedido da liderança",sender:"diretoria@nuvme.com.br",subject:"Preciso de um favor urgente",body:"Bom dia,\n\nEstou entrando em uma reunião e preciso resolver uma pendência com um fornecedor. Faça o pagamento com prioridade e mantenha isso reservado até concluirmos o processo.\n\nDepois explico os detalhes.\n\nObrigado.",answer:2,why:"Mesmo que o endereço exibido pareça correto, ele pode ser falsificado ou a conta pode estar comprometida. Pagamentos devem seguir o processo de aprovação e confirmação independente, especialmente diante de urgência ou sigilo.",opts:["Realizar o pagamento porque o remetente parece ser da diretoria.","Responder pedindo que envie os dados bancários por e-mail.","Não executar; validar a solicitação e os dados por um canal independente e seguir o processo financeiro."]},
-{cat:"Anexo inesperado",sender:"rh@nuvme.com.br",subject:"Comprovante atualizado — abrir hoje",body:"Olá,\n\nSegue o comprovante atualizado solicitado. O arquivo está anexado e precisa ser aberto hoje para evitar divergência no cadastro.\n\nCaso o arquivo solicite habilitar macros ou executar conteúdo, siga as instruções na tela.",answer:1,why:"Anexos inesperados e instruções para habilitar macros ou executar conteúdo são sinais de risco. Confirme com o RH pelo canal habitual antes de abrir ou executar o arquivo.",opts:["Abrir e habilitar macros para visualizar o documento.","Não abrir nem habilitar conteúdo; confirmar com o RH por canal conhecido.","Salvar o anexo no computador e abrir depois."]},
-{cat:"MFA / autenticação",sender:"identidade@nuvme-login.com",subject:"Validação de autenticação multifator",body:"Detectamos uma falha na sua autenticação multifator.\n\nPara manter o acesso ativo, acesse o portal de validação e informe o código recebido no celular.\n\nLink: https://nuvme-login.com/mfa",answer:2,why:"Códigos de MFA são secretos e não devem ser compartilhados em páginas acessadas por links inesperados. O domínio é diferente do corporativo. Nunca aprove uma solicitação de autenticação que você não iniciou.",opts:["Informar o código, pois a mensagem menciona MFA.","Aprovar a solicitação no celular para evitar bloqueio.","Não abrir o link nem compartilhar códigos; reportar e consultar a TI por canal oficial."]},
-{cat:"Compartilhamento legítimo?",sender:"colega@nuvme.com.br",subject:"Planilha da reunião de ontem",body:"Oi,\n\nConforme conversamos na reunião de ontem, deixei a planilha na pasta compartilhada habitual da equipe. Você consegue revisar a aba “Pendências” quando tiver um tempo?\n\nSe não encontrar o arquivo, me chama no chat corporativo.",answer:0,why:"O contexto é específico e orienta a acessar a pasta compartilhada habitual, sem pedir senha, pagamento ou ação urgente. Ainda assim, verifique se o arquivo está realmente no local conhecido e se você esperava esse contato.",opts:["Acessar a pasta compartilhada habitual e confirmar o arquivo e as permissões.","Pedir a senha do colega para acessar a planilha.","Procurar um link alternativo na internet para abrir a planilha."]},
-{cat:"Alteração bancária",sender:"financeiro@fornecedor-pagamentos.com",subject:"Atualização urgente de conta bancária",body:"Prezados,\n\nAlteramos nossa conta bancária. Solicitamos que todos os pagamentos futuros sejam direcionados para os novos dados abaixo.\n\nPara evitar atrasos, utilize a nova conta a partir de hoje. Não é necessário telefonar para confirmar.",answer:1,why:"Mudança de dados bancários é um cenário clássico de fraude. Confirme a alteração com o fornecedor usando um telefone ou contato previamente cadastrado — nunca apenas os dados ou contatos presentes na mensagem.",opts:["Atualizar o cadastro porque o e-mail trouxe os dados completos.","Suspender a alteração até confirmar por um contato previamente conhecido e seguir o processo de aprovação.","Responder pedindo uma cópia do documento bancário."]},
-{cat:"Senha expirada",sender:"microsoft365@nuvme-access.net",subject:"Sua senha expira em 30 minutos",body:"Sua senha corporativa expirará em 30 minutos.\n\nClique para manter sua conta ativa e evitar interrupção dos serviços:\nhttps://nuvme-access.net/password\n\nEsta mensagem é automática. Não responda.",answer:2,why:"A urgência e o domínio diferente são sinais de phishing. Não use o link recebido; se houver dúvida sobre a senha, abra o portal corporativo digitando o endereço conhecido ou procure a TI.",opts:["Clicar rapidamente porque o prazo é curto.","Responder pedindo mais tempo para atualizar a senha.","Ignorar o link e verificar a situação pelo portal conhecido ou com a TI."]},
-{cat:"Solicitação de dados",sender:"pesquisa@nuvme.com.br",subject:"Atualização do cadastro da equipe",body:"Olá,\n\nEstamos atualizando o cadastro interno. Responda a esta mensagem com seu usuário, senha corporativa e o código de autenticação enviado ao celular.\n\nPrecisamos concluir o processo ainda hoje.",answer:2,why:"Uma solicitação de senha e código de autenticação por e-mail não é apropriada, mesmo quando o endereço parece legítimo. Pode haver falsificação do remetente ou comprometimento da conta. Não compartilhe esses dados e reporte a mensagem.",opts:["Enviar apenas a senha, sem o código MFA.","Enviar os dados se o remetente estiver no catálogo corporativo.","Não responder nem compartilhar credenciais; confirmar a solicitação com o setor por canal independente e reportar."]},
-{cat:"Convite para reunião",sender:"agenda@nuvme.com.br",subject:"Reunião de alinhamento — convite atualizado",body:"Olá,\n\nO convite da reunião foi atualizado. Confira o horário diretamente no calendário corporativo. Caso não veja a alteração, entre em contato com o organizador pelo chat habitual.\n\nNão há anexos nem pedido de credenciais nesta mensagem.",answer:0,why:"A mensagem direciona você ao calendário corporativo habitual e não exige login por um link externo, senha, pagamento ou ação urgente. Mesmo assim, confirme o evento no próprio calendário e não confie apenas no nome do remetente.",opts:["Abrir o calendário corporativo pelo aplicativo ou endereço habitual e conferir o evento.","Baixar um aplicativo indicado por um link externo para ver o convite.","Responder com sua senha para confirmar presença."]}
-];
-let idx=0, score=0, selected=null, mode="training", answers=[];
-const $=id=>document.getElementById(id);
-function start(){idx=0;score=0;selected=null;answers=[];mode=$("mode").value;$("intro").classList.add("hidden");$("results").classList.add("hidden");$("quiz").classList.remove("hidden");renderQ()}
-function renderQ(){const q=questions[idx];selected=null;$("count").textContent=`Pergunta ${idx+1} de ${questions.length}`;$("points").textContent=`${score} pontos`;$("fill").style.width=`${idx/questions.length*100}%`;$("category").textContent=q.cat;$("qtitle").textContent="Analise esta mensagem";$("sender").textContent=q.sender;$("subject").textContent=q.subject;$("body").textContent=q.body;$("feedback").className="feedback hidden";$("feedback").textContent="";$("next").disabled=true;$("next").textContent=idx===questions.length-1?"Ver resultado":"Próxima pergunta";$("options").innerHTML="";
-q.opts.forEach((opt,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+opt;b.onclick=()=>choose(i);$("options").appendChild(b)})}
-function choose(i){if(selected!==null)return;selected=i;const q=questions[idx];const correct=i===q.answer;if(correct)score+=10;answers.push({question:q.subject,chosen:q.opts[i],correct,explanation:q.why});[...$("options").children].forEach((b,j)=>{b.disabled=true;if(j===i)b.classList.add("selected")});$("points").textContent=`${score} pontos`;$("next").disabled=false;
-const f=$("feedback");f.classList.remove("hidden");f.classList.add(correct?"good":"bad");if(mode==="training"){f.innerHTML=`<h3>${correct?"Correto!":"Não é a melhor opção."}</h3><p>${q.why}</p>`}else{f.innerHTML=`<h3>${correct?"Resposta registrada.":"Resposta registrada."}</h3><p>Continue para a próxima situação. As explicações serão apresentadas no resumo final.</p>`}}
-function finish(){ $("quiz").classList.add("hidden");$("results").classList.remove("hidden");$("fill").style.width="100%";const pct=Math.round(score/(questions.length*10)*100);$("greeting").textContent=$("name").value.trim()?`Obrigado por participar, ${$("name").value.trim()}.`:"Obrigado por participar."; $("score").textContent=`${score} / ${questions.length*10}`;$("scoretext").textContent=`Você acertou ${answers.filter(a=>a.correct).length} de ${questions.length} situações (${pct}%).`;$("resultfill").style.width=pct+"%";
-$("resulttitle").textContent=pct>=90?"Excelente percepção de segurança":pct>=70?"Bom resultado — continue atento":"Oportunidade de aprendizado";$("resultmessage").textContent=pct>=90?"Você identificou a maioria dos sinais. Mantenha o hábito de verificar links, remetentes e solicitações incomuns.":pct>=70?"Você reconhece vários riscos, mas revise as situações em que a urgência, o domínio ou o pedido de dados deveriam acender um alerta.":"Revise as explicações abaixo e lembre-se: pare, verifique e reporte mensagens suspeitas. Não compartilhe senhas nem códigos de MFA.";
-$("review").innerHTML="";answers.forEach((a,i)=>{const d=document.createElement("div");d.className="feedback "+(a.correct?"good":"bad");const h=document.createElement("h3");h.textContent=`${i+1}. ${a.correct?"Acerto":"Revisar"} — ${a.question}`;const p=document.createElement("p");p.textContent=a.explanation;d.appendChild(h);d.appendChild(p);$("review").appendChild(d)})}
-function summary(){const pct=Math.round(score/(questions.length*10)*100);const lines=["Desafio Anti-Phishing — Nuvme",`Nome: ${$("name").value.trim()||"Não informado"}`,`Departamento: ${$("department").value||"Não informado"}`,`Modo: ${mode==="training"?"Treinamento":"Avaliação"}`,`Resultado: ${score}/${questions.length*10} (${pct}%)`,"",...answers.map((a,i)=>`${i+1}. ${a.correct?"Acerto":"Revisar"} — ${a.question}`)];const t=lines.join("\n");if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(()=>{$("copy").textContent="Resumo copiado!"}).catch(()=>fallbackCopy(t))}else fallbackCopy(t)}
-function fallbackCopy(t){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand("copy");ta.remove();$("copy").textContent="Resumo copiado!"}
-$("start").onclick=start;$("next").onclick=()=>{if(idx<questions.length-1){idx++;renderQ()}else finish()};$("quit").onclick=finish;$("restart").onclick=()=>{$("results").classList.add("hidden");$("intro").classList.remove("hidden")};$("copy").onclick=summary;
-</script>
-</body>
-</html>
+<script src="assets/app.js"></script>
+</body></html>
